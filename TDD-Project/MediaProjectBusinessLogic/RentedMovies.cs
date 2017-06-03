@@ -14,6 +14,10 @@ namespace MediaProjectBusinessLogic
 
         public void AddRental(string movieTitle, string socialSecurityNumber)
         {
+            // hitta den rätta kunden i listan
+            var result = ListCustomers.First(x => x.SSN == socialSecurityNumber);
+
+
             Movies movie = new Movies()
             {
                 Title = movieTitle
@@ -22,8 +26,9 @@ namespace MediaProjectBusinessLogic
             // Här läggs en uthyrd film in i listan 
             Customer rentedMovies = new Customer()
             {
+                FirstName = result.FirstName,
                 SSN = socialSecurityNumber,
-                Movies = movie
+                movies = movie
             };
 
 
@@ -32,8 +37,9 @@ namespace MediaProjectBusinessLogic
 
         public List<RentedMovies> GetRentalsFor(string socialSecurityNumber)
         {
-            var rentedMoviesFromCustomer = ListCustomers.Find(x => x.SSN == socialSecurityNumber);
-            return ListOfRentedMovies;
+            //Denna metod är för att hämta alla filmerna som är uthyrda till en kund
+            //var rentedmoviesfromcustomer = listcustomers.find(x => x.ssn == socialsecuritynumber);
+            return null;
         }
 
         public void RemoveRental(string movieTitle, string socialSecurityNumber)

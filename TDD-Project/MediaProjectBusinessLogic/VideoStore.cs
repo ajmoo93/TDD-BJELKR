@@ -8,10 +8,19 @@ namespace MediaProjectBusinessLogic
 {
     public class VideoStore : IVideoStore
     {
+        private IRentals rentals;
         List<Movies> ListMovies = new List<Movies>();
         List<Customer> Listcustomers = new List<Customer>();
+
+
+        public VideoStore(IRentals _rentals)
+        {
+            rentals = _rentals;
+        }
+
         public void AddMovie(Movies movie)
         {
+            
             ListMovies.Add(movie);
         }
 
@@ -32,21 +41,29 @@ namespace MediaProjectBusinessLogic
 
         public void RentMovie(string movieTitle, string socialSecurityNumber)
         {
-            var movie = ListMovies.First(x => x.Title == movieTitle);
-            Customer rentMovies = new Customer()
+            //Lista av custommrs/Movies
+            //Du måste räkna antalet filmer av en som en kund har
+            //Måste förbjuda att hyra en fjärde.
+            if(ListMovies.Contains(movieTitle))
+            if (ListMovies.Count(x => x.Title.Equals(movieTitle)) > 3)
+                throw new CantAddAFourthMovie();
+            else
             {
-                SSN = socialSecurityNumber,
-                Movies = movie
-            };
+                rentals.AddRental(movieTitle, socialSecurityNumber);
 
-            Listcustomers.Add(rentMovies);
+            }
         }
 
         public void ReturnMovie(int id, string movieTitle, string socialSecurityNumber)
         {
-            var Return = ListMovies.Find(x => x.Id.Equals(id));
-            ListMovies.Remove(Return);
+            var movieReturn = ListMovies.Find(x => x.Id.Equals(id) && x.Equals(socialSecurityNumber) && x.Equals(movieTitle));
+            ListMovies.Remove(movieReturn);
            
+        }
+
+        public List<Movies> GetMovies()
+        {
+            return ListMovies;
         }
     }
 }

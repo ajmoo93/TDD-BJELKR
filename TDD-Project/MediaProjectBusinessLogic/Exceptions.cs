@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MediaProjectBusinessLogic
 {
-    class Exceptions
+   public class CantAddAFourthMovie : Exception
     {
+        public CantAddAFourthMovie()
+        {
+
+        }
     }
 }

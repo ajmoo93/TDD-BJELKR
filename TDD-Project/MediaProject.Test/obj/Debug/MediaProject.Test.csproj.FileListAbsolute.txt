@@ -1,0 +1,11 @@
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject.Test\obj\Debug\MediaProject.Test.csprojResolveAssemblyReference.cache
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject.Test\bin\Debug\MediaProject.Test.dll
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject.Test\bin\Debug\MediaProject.Test.pdb
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject.Test\bin\Debug\MediaProjectBusinessLogic.dll
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject.Test\bin\Debug\nunit.framework.dll
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject.Test\bin\Debug\MediaProjectBusinessLogic.pdb
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject.Test\bin\Debug\nunit.framework.xml
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject.Test\obj\Debug\MediaProject.Test.dll
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject.Test\obj\Debug\MediaProject.Test.pdb
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject.Test\bin\Debug\NSubstitute.dll
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject.Test\bin\Debug\NSubstitute.xml

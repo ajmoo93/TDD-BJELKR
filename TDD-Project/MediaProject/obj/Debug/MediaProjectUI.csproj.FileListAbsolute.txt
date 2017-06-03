@@ -1,0 +1,8 @@
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject\bin\Debug\MediaProject.exe.config
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject\bin\Debug\MediaProject.exe
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject\bin\Debug\MediaProject.pdb
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject\bin\Debug\MediaProjectBusinessLogic.dll
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject\bin\Debug\MediaProjectBusinessLogic.pdb
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject\obj\Debug\MediaProjectUI.csprojResolveAssemblyReference.cache
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject\obj\Debug\MediaProject.exe
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProject\obj\Debug\MediaProject.pdb

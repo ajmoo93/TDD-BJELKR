@@ -10,7 +10,7 @@ namespace MediaProjectBusinessLogic
     {
         public string FirstName { get; set; }
         public string SSN { get; set; }
-        public Movies Movies { get; set; }
+        public Movies movies { get; set; }
 
         public Customer(string firstName, string ssn)
         {
