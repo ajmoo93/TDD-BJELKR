@@ -20,8 +20,12 @@ namespace MediaProjectBusinessLogic
 
         public void AddMovie(Movies movie)
         {
-            
-            ListMovies.Add(movie);
+            if (ListMovies.Count(x => x.Title.Equals(movie.Title)) >= 3)
+                throw new CantAddAFourthMovie();
+            else
+            {
+                ListMovies.Add(movie);
+            }
         }
 
         public List<Customer> GetCustomers()
@@ -44,14 +48,14 @@ namespace MediaProjectBusinessLogic
             //Lista av custommrs/Movies
             //Du måste räkna antalet filmer av en som en kund har
             //Måste förbjuda att hyra en fjärde.
-            if(ListMovies.Contains(movieTitle))
-            if (ListMovies.Count(x => x.Title.Equals(movieTitle)) > 3)
-                throw new CantAddAFourthMovie();
+            if (ListMovies.Count(x => x.Title.Equals(socialSecurityNumber)) >= 1)
+                throw new CantRentSameMovieTwice();
             else
             {
                 rentals.AddRental(movieTitle, socialSecurityNumber);
 
             }
+
         }
 
         public void ReturnMovie(int id, string movieTitle, string socialSecurityNumber)

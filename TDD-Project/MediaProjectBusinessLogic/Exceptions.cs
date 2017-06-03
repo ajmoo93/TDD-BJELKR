@@ -12,5 +12,13 @@ namespace MediaProjectBusinessLogic
         {
 
         }
+        
+        }
+    public class CantRentSameMovieTwice : Exception
+    {
+        public CantRentSameMovieTwice()
+        {
+
+        }
     }
 }

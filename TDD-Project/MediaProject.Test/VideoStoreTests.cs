@@ -74,5 +74,14 @@ namespace MediaProject.Test
             Assert.Throws<CantAddAFourthMovie>(() => sut.AddMovie(movie1));
 
         }
+        [Test]
+        public void CantRentTwoOfTheSamecoppys()
+        {
+            sut.RentMovie(movie1.Title, customer1.SSN);
+            sut.RentMovie(movie1.Title, customer1.SSN);
+
+            Assert.Throws<CantRentSameMovieTwice>(() => sut.RentMovie(movie1.Title, customer1.SSN));
+
+        }
     }
 }
