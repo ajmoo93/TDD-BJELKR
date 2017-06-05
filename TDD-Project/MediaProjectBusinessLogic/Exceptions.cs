@@ -21,4 +21,11 @@ namespace MediaProjectBusinessLogic
 
         }
     }
+    public class NoTitleOnMovieException : Exception
+    {
+        public NoTitleOnMovieException()
+        {
+
+        }
+    }
 }

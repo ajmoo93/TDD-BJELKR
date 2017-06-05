@@ -13,16 +13,20 @@ namespace MediaProject.Test
     public class VideoStoreTests
     {
         private IRentals rentals;
+        private IDateTime dateStub;
         private VideoStore sut;
         private Customer customer1;
-        private Movies movie1;
+        private Movies movie1, NotitleOnMovie;
 
         [SetUp]
         public void Setup()
         {
             rentals = Substitute.For<IRentals>();
-            sut = new VideoStore(rentals);
+            dateStub = Substitute.For<IDateTime>();
+            sut = new VideoStore(rentals, dateStub);
             movie1 = new Movies() {Id = 0, Title = "Kalle Anka", Genre = "Animation" };
+            NotitleOnMovie = new Movies() { Id = 0, Title = "", Genre = "Comedy" };
+
             customer1 = new Customer() { FirstName = "KallePer", movies = movie1, SSN = "1994-12-05" };
         }
         [Test]
@@ -77,10 +81,21 @@ namespace MediaProject.Test
         [Test]
         public void CantRentTwoOfTheSamecoppys()
         {
-            sut.RentMovie(movie1.Title, customer1.SSN);
+            //sut.RentMovie(movie1.Title, customer1.SSN);
             sut.RentMovie(movie1.Title, customer1.SSN);
 
             Assert.Throws<CantRentSameMovieTwice>(() => sut.RentMovie(movie1.Title, customer1.SSN));
+
+        }
+        [Test]
+        public void NoExistingMovititle()
+        {
+           
+            Assert.Throws<NoTitleOnMovieException>(() => sut.AddMovie(NotitleOnMovie));
+        }
+        [Test]
+        public void CantRentMoviesCusOfDueDate()
+        {
 
         }
     }

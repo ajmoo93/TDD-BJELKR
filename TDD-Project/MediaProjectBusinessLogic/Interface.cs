@@ -21,5 +21,9 @@ namespace MediaProjectBusinessLogic
         List<Customer> GetCustomers();
         void ReturnMovie(int Id, string movieTitle, string socialSecurityNumber);
     }
+    public interface IDateTime
+    {
+        DateTime Now();
+    }
 }
 
