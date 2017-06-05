@@ -28,4 +28,11 @@ namespace MediaProjectBusinessLogic
 
         }
     }
+    public class MovieWithDueDateFoundException : Exception
+    {
+        public MovieWithDueDateFoundException()
+        {
+
+        }
+    }
 }

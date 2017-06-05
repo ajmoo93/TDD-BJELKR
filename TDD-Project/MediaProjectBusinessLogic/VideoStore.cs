@@ -9,16 +9,15 @@ namespace MediaProjectBusinessLogic
     public class VideoStore : IVideoStore
     {
         private IRentals rentals;
-        private IDateTime dateStub;
+        
         List<Movies> ListMovies = new List<Movies>();
         List<Customer> Listcustomers = new List<Customer>();
 
 
-        public VideoStore(IRentals _rentals, IDateTime datestub)
+        public VideoStore(IRentals _rentals)
         {
             rentals = _rentals;
-            //datestub blir som DateTime för vi gör en IDateTime och stubbar den
-            this.dateStub = datestub;
+           
         }
 
         public void AddMovie(Movies movie)

@@ -23,7 +23,7 @@ namespace MediaProject.Test
         {
             rentals = Substitute.For<IRentals>();
             dateStub = Substitute.For<IDateTime>();
-            sut = new VideoStore(rentals, dateStub);
+            sut = new VideoStore(rentals);
             movie1 = new Movies() {Id = 0, Title = "Kalle Anka", Genre = "Animation" };
             NotitleOnMovie = new Movies() { Id = 0, Title = "", Genre = "Comedy" };
 

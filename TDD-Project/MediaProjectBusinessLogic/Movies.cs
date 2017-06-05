@@ -11,12 +11,14 @@ namespace MediaProjectBusinessLogic
         public int Id { get; set; }
         public string Title { get; set; }
         public string Genre { get; set; }
+        public DateTime dueDate { get; set; }
         
 
-        public Movies(string title, string genre)
+        public Movies(string title, string genre, DateTime duedate)
         {
             Title = title;
             Genre = genre;
+            dueDate = duedate;
         }
         
         public Movies()
