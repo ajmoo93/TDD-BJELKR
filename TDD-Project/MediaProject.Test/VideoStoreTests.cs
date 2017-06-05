@@ -15,6 +15,7 @@ namespace MediaProject.Test
         private IRentals rentals;
         private IDateTime dateStub;
         private VideoStore sut;
+        private RentedMovies sutRent;
         private Customer customer1;
         private Movies movie1, NotitleOnMovie;
 
@@ -24,7 +25,8 @@ namespace MediaProject.Test
             rentals = Substitute.For<IRentals>();
             dateStub = Substitute.For<IDateTime>();
             sut = new VideoStore(rentals);
-            movie1 = new Movies() {Id = 0, Title = "Kalle Anka", Genre = "Animation" };
+            
+            movie1 = new Movies() {Id = 0, Title = "Kalle Anka", Genre = "Animation"};
             NotitleOnMovie = new Movies() { Id = 0, Title = "", Genre = "Comedy" };
 
             customer1 = new Customer() { FirstName = "KallePer", movies = movie1, SSN = "1994-12-05" };
@@ -65,8 +67,8 @@ namespace MediaProject.Test
             sut.RegisterCustomer(customer1.FirstName, customer1.SSN);
             sut.RentMovie(movie1.Title, customer1.SSN);
             sut.ReturnMovie(movie1.Id, movie1.Title, customer1.SSN);
-            var result = sut.GetMovies().First(x => x.Title == movie1.Title);
-            Assert.AreEqual(movie1, result);
+            rentals.Received().RemoveRental(Arg.Is(movie1.Title), Arg.Is(customer1.SSN));
+            
         }
         [Test]
         public void ThrowexceptionWhenAddingFourthMovie()
@@ -78,25 +80,13 @@ namespace MediaProject.Test
             Assert.Throws<CantAddAFourthMovie>(() => sut.AddMovie(movie1));
 
         }
-        [Test]
-        public void CantRentTwoOfTheSamecoppys()
-        {
-            //sut.RentMovie(movie1.Title, customer1.SSN);
-            sut.RentMovie(movie1.Title, customer1.SSN);
-
-            Assert.Throws<CantRentSameMovieTwice>(() => sut.RentMovie(movie1.Title, customer1.SSN));
-
-        }
-        [Test]
-        public void NoExistingMovititle()
-        {
+        
+        //[Test]
+        //public void NoExistingMovititle()
+        //{
            
-            Assert.Throws<NoTitleOnMovieException>(() => sut.AddMovie(NotitleOnMovie));
-        }
-        [Test]
-        public void CantRentMoviesCusOfDueDate()
-        {
-
-        }
+        //    Assert.Throws<NoTitleOnMovieException>(() => sut.AddMovie(NotitleOnMovie));
+        //}
+      
     }
 }

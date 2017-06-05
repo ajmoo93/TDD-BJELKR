@@ -28,11 +28,19 @@ namespace MediaProjectBusinessLogic
 
         }
     }
+    public class NoCustomerInOurSystem : Exception
+    {
+        public NoCustomerInOurSystem()
+        {
+
+        }
+    }
     public class MovieWithDueDateFoundException : Exception
     {
         public MovieWithDueDateFoundException()
         {
 
         }
-    }
+    }  
+    
 }

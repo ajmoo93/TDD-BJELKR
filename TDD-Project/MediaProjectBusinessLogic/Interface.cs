@@ -11,7 +11,7 @@ namespace MediaProjectBusinessLogic
     {
         void AddRental(string movieTitle, string socialSecurityNumber);
         void RemoveRental(string movieTitle, string socialSecurityNumber);
-        List<RentedMovies> GetRentalsFor(string socialSecurityNumber);
+        List<Rental> GetRentalsFor(string socialSecurityNumber);
     }
     public interface IVideoStore
     {

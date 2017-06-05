@@ -8,49 +8,48 @@ namespace MediaProjectBusinessLogic
 {
     public class RentedMovies : IRentals
     {
-        private List<Rentals> rentals;
+        private List<Rental> rentals;
         private IDateTime datetime;
+        
+
         public RentedMovies(IDateTime date)
         {
             //datestub blir som DateTime för vi gör en IDateTime och stubbar den
             this.datetime = date;
-            rentals = new List<Rentals>();
+            rentals = new List<Rental>();
         }
-
         public void AddRental(string movieTitle, string socialSecurityNumber)
         {
-            // hitta den rätta kunden i listan
-            //var result = ListCustomers.First(x => x.SSN == socialSecurityNumber);
-            foreach(var rented in rentals)
+             
+            var moviesRentedByCustomers = rentals.FirstOrDefault(x => x.SecurityNumber == socialSecurityNumber && x.Title == movieTitle);
+            var hasLateReturns = rentals.Any(x => x.SecurityNumber == socialSecurityNumber && x.due < datetime.Now());
+
+            if (hasLateReturns)
             {
-                if (rented.SecurityNumber == socialSecurityNumber && rented.due == datetime.Now())
-                    throw new MovieWithDueDateFoundException();
+                throw new MovieWithDueDateFoundException();
             }
+
+            if (moviesRentedByCustomers == null)
+            {
+                rentals.Add(new Rental(movieTitle, socialSecurityNumber, datetime.Now().AddDays(3)));
+            }
+            else
+            {
+                throw new CantRentSameMovieTwice();
+            }
+
             
 
-            //Movies movie = new Movies()
-            //{
-            //    Title = movieTitle
-            //};
 
-            //// Här läggs en uthyrd film in i listan 
-            //Customer rentedMovies = new Customer()
-            //{
-            //    FirstName = result.FirstName,
-            //    SSN = socialSecurityNumber,
-            //    movies = movie,
-                
-            //};
-            
-
-            //ListCustomers.Add(rentedMovies);
         }
 
-        public List<RentedMovies> GetRentalsFor(string socialSecurityNumber)
+        public List<Rental> GetRentalsFor(string socialSecurityNumber)
         {
             //Denna metod är för att hämta alla filmerna som är uthyrda till en kund
             //var rentedmoviesfromcustomer = listcustomers.find(x => x.ssn == socialsecuritynumber);
-            return null;
+            var result = rentals.Where(x => x.SecurityNumber == socialSecurityNumber).ToList();
+            
+            return result;
         }
 
         public void RemoveRental(string movieTitle, string socialSecurityNumber)

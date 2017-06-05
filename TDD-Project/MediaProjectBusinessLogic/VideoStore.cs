@@ -51,24 +51,25 @@ namespace MediaProjectBusinessLogic
 
         public void RentMovie(string movieTitle, string socialSecurityNumber)
         {
-            //Lista av custommrs/Movies
-            //Du måste räkna antalet filmer av en som en kund har
-            //Måste förbjuda att hyra en fjärde.
-            if (Listcustomers.Contains(new Customer { SSN = socialSecurityNumber}))
-                throw new CantRentSameMovieTwice();
-            else
+            var customer = Listcustomers.FirstOrDefault(x => x.SSN == socialSecurityNumber);
+            var movie = ListMovies.FirstOrDefault(x => x.Title == movieTitle);
+            if (customer == null)
             {
-                rentals.AddRental(movieTitle, socialSecurityNumber);
+                throw new NoCustomerInOurSystem();
 
             }
+            else if (movie == null)
+            {
+                throw new NoTitleOnMovieException();
 
+            }
+            rentals.AddRental(movieTitle, socialSecurityNumber);
+            
         }
 
         public void ReturnMovie(int id, string movieTitle, string socialSecurityNumber)
         {
-            var movieReturn = ListMovies.Find(x => x.Id.Equals(id) && x.Equals(socialSecurityNumber) && x.Equals(movieTitle));
-            ListMovies.Remove(movieReturn);
-           
+            rentals.RemoveRental(movieTitle, socialSecurityNumber);           
         }
 
         public List<Movies> GetMovies()

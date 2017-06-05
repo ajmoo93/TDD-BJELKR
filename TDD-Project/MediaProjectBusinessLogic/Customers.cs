@@ -16,7 +16,9 @@ namespace MediaProjectBusinessLogic
         {
             FirstName = firstName;
             SSN = ssn;
+
         }
+         
 
         public Customer()
         {

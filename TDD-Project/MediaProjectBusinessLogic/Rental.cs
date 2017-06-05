@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace MediaProjectBusinessLogic
 {
-   public class Rentals
+   public class Rental
     {
         public string Title { get; set; }
-        public int SecurityNumber { get; set; }
+        public string SecurityNumber { get; set; }
         public DateTime due { get; set; }
 
-        public Rentals(string title, int ssn, DateTime duetime)
+        public Rental(string title, string ssn, DateTime duetime)
         {
             Title = title;
             SecurityNumber = ssn;
