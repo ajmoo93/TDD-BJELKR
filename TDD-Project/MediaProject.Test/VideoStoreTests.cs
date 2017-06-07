@@ -80,7 +80,13 @@ namespace MediaProject.Test
             Assert.Throws<CantAddAFourthMovie>(() => sut.AddMovie(movie1));
 
         }
-        
+        [Test]
+        public void CantAddsameCustomerTwiceWithSsn()
+        {
+            sut.RegisterCustomer(customer1.FirstName, customer1.SSN);
+           
+            Assert.Throws<CantAddSameSsnTwiceException>(() => sut.RegisterCustomer(customer1.FirstName, customer1.SSN));
+        }
         //[Test]
         //public void NoExistingMovititle()
         //{

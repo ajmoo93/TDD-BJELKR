@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MediaProject.Test
 {
-    [TestFixture]
+   [TestFixture]
    public class RentLMovietest
     {
         private IRentals rentals;
@@ -65,6 +65,11 @@ namespace MediaProject.Test
             Assert.Throws<CantRentSameMovieTwice>(() => {
                 sut.AddRental("luffsen och rödluvan", "1946-12-12-5656");
             });
+
+        }
+        [Test]
+        public void CantRentMovieTHatDoesNotExist()
+        {
 
         }
     }

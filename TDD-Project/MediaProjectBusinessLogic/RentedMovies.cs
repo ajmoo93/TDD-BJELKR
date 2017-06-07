@@ -37,8 +37,11 @@ namespace MediaProjectBusinessLogic
             {
                 throw new CantRentSameMovieTwice();
             }
+           
 
-            
+
+
+
 
 
         }

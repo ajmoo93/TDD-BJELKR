@@ -46,7 +46,12 @@ namespace MediaProjectBusinessLogic
                 FirstName = name,
                 SSN = socialSecurityNumber
             };
+            if (Listcustomers.Any(x => x.SSN == socialSecurityNumber))
+            {
+                throw new CantAddSameSsnTwiceException();
+            }
             Listcustomers.Add(newCustomer);
+            
         }
 
         public void RentMovie(string movieTitle, string socialSecurityNumber)

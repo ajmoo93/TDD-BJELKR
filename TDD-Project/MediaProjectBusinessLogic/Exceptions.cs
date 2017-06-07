@@ -42,5 +42,19 @@ namespace MediaProjectBusinessLogic
 
         }
     }  
+    public class CantRentaNonExistingMovie : Exception
+    {
+        public CantRentaNonExistingMovie()
+        {
+
+        }
+    }
+    public class CantAddSameSsnTwiceException : Exception
+    {
+        public CantAddSameSsnTwiceException()
+        {
+
+        }
+    }
     
 }
