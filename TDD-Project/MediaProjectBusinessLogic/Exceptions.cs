@@ -56,5 +56,12 @@ namespace MediaProjectBusinessLogic
 
         }
     }
+    public class CantRentNonExistingMovie : Exception
+    {
+        public CantRentNonExistingMovie()
+        {
+
+        }
+    }
     
 }

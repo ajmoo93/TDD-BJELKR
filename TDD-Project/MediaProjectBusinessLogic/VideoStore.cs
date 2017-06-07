@@ -68,6 +68,7 @@ namespace MediaProjectBusinessLogic
                 throw new NoTitleOnMovieException();
 
             }
+            
             rentals.AddRental(movieTitle, socialSecurityNumber);
             
         }

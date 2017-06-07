@@ -60,17 +60,18 @@ namespace MediaProject.Test
         [Test]
         public void CantRentTwoOfTheSamecoppys()
         {
-            sut.AddRental("luffsen och rödluvan", "1946-12-12-5656");
+            sut.AddRental("luffsen och rödluvan", "1946-12-12");
 
             Assert.Throws<CantRentSameMovieTwice>(() => {
-                sut.AddRental("luffsen och rödluvan", "1946-12-12-5656");
+                sut.AddRental("luffsen och rödluvan", "1946-12-12");
             });
 
         }
         [Test]
-        public void CantRentMovieTHatDoesNotExist()
+        public void CantRentMovieThatDoesNotExist()
         {
-
+            
+            Assert.Throws<CantRentNonExistingMovie>(() => sut.AddRental("soppa", "1955-05-04"));
         }
     }
 }
