@@ -63,5 +63,18 @@ namespace MediaProjectBusinessLogic
 
         }
     }
-    
+    public class CantRentMovieIfCustomerNotRegistred : Exception
+    {
+        public CantRentMovieIfCustomerNotRegistred()
+        {
+
+        }
+    }
+    public class WrongFormatException : Exception
+    {
+        public WrongFormatException()
+        {
+
+        }
+    }
 }

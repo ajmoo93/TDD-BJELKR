@@ -67,11 +67,6 @@ namespace MediaProject.Test
             });
 
         }
-        [Test]
-        public void CantRentMovieThatDoesNotExist()
-        {
-            
-            Assert.Throws<CantRentNonExistingMovie>(() => sut.AddRental("soppa", "1955-05-04"));
-        }
+       
     }
 }

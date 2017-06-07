@@ -1,5 +1,5 @@
-C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProjectBusinessLogic\obj\Debug\MediaProjectBusinessLogic.csprojResolveAssemblyReference.cache
 C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProjectBusinessLogic\bin\Debug\MediaProjectBusinessLogic.dll
 C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProjectBusinessLogic\bin\Debug\MediaProjectBusinessLogic.pdb
 C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProjectBusinessLogic\obj\Debug\MediaProjectBusinessLogic.dll
 C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProjectBusinessLogic\obj\Debug\MediaProjectBusinessLogic.pdb
+C:\Users\Emil\Source\Repos\TDD-BJELKR\TDD-Project\MediaProjectBusinessLogic\obj\Debug\MediaProjectBusinessLogic.csprojResolveAssemblyReference.cache

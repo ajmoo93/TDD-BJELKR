@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace MediaProjectBusinessLogic
@@ -9,7 +10,7 @@ namespace MediaProjectBusinessLogic
     public class VideoStore : IVideoStore
     {
         private IRentals rentals;
-        
+
         List<Movies> ListMovies = new List<Movies>();
         List<Customer> Listcustomers = new List<Customer>();
 
@@ -17,7 +18,7 @@ namespace MediaProjectBusinessLogic
         public VideoStore(IRentals _rentals)
         {
             rentals = _rentals;
-           
+
         }
 
         public void AddMovie(Movies movie)
@@ -46,12 +47,16 @@ namespace MediaProjectBusinessLogic
                 FirstName = name,
                 SSN = socialSecurityNumber
             };
-            if (Listcustomers.Any(x => x.SSN == socialSecurityNumber))
+            if (!ValidSsn(socialSecurityNumber))
             {
-                throw new CantAddSameSsnTwiceException();
+                throw new WrongFormatException();
             }
+                if (Listcustomers.Any(x => x.SSN == socialSecurityNumber))
+                {
+                    throw new CantAddSameSsnTwiceException();
+                }
             Listcustomers.Add(newCustomer);
-            
+
         }
 
         public void RentMovie(string movieTitle, string socialSecurityNumber)
@@ -63,24 +68,39 @@ namespace MediaProjectBusinessLogic
                 throw new NoCustomerInOurSystem();
 
             }
+            //Om filmen inte existerar
             else if (movie == null)
             {
-                throw new NoTitleOnMovieException();
+                //throw exception
+                throw new CantRentNonExistingMovie();
 
             }
-            
+            //if (!ListMovies.Any(x => x.Title == movieTitle))
+            //{
+
+            //}
             rentals.AddRental(movieTitle, socialSecurityNumber);
-            
+
         }
 
         public void ReturnMovie(int id, string movieTitle, string socialSecurityNumber)
         {
-            rentals.RemoveRental(movieTitle, socialSecurityNumber);           
+            rentals.RemoveRental(movieTitle, socialSecurityNumber);
         }
 
         public List<Movies> GetMovies()
         {
             return ListMovies;
+        }
+
+        public bool ValidSsn(string socialsecuritynumber)
+        {
+            var ssnRegex = @"^\d{4}-\d{2}-\d{2}$";
+            if (Regex.IsMatch(socialsecuritynumber, ssnRegex))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -87,12 +87,18 @@ namespace MediaProject.Test
            
             Assert.Throws<CantAddSameSsnTwiceException>(() => sut.RegisterCustomer(customer1.FirstName, customer1.SSN));
         }
-        //[Test]
-        //public void NoExistingMovititle()
-        //{
-           
-        //    Assert.Throws<NoTitleOnMovieException>(() => sut.AddMovie(NotitleOnMovie));
-        //}
-      
+        [Test]
+        public void CantRentMovieThatDoesNotExist()
+        {
+            sut.RegisterCustomer(customer1.FirstName, customer1.SSN);
+            Assert.Throws<CantRentNonExistingMovie>(() => sut.RentMovie("Sveriges Historia", "1994-12-05"));
+        }
+        [Test]
+        public void WrongssnFormat()
+        {
+
+            Assert.Throws<WrongFormatException>(() => sut.RegisterCustomer("Pelle", "5458541"));
+        }
+
     }
 }

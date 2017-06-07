@@ -28,8 +28,7 @@ namespace MediaProjectBusinessLogic
             {
                 throw new MovieWithDueDateFoundException();
             }
-            if (!rentals.Any(x => x.Title == movieTitle))
-                throw new CantRentNonExistingMovie();
+            
 
             if (moviesRentedByCustomers == null)
             {
